@@ -9,6 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
+
+/**
+ * Apenas para demonstrar a razão porque NÃO se utiliza ScrollView para listas.
+ */
 public class ScrollViewListActivity extends AppCompatActivity {
 
     private EditText itemCountInput;
@@ -35,15 +41,27 @@ public class ScrollViewListActivity extends AppCompatActivity {
     }
 
     private void addViews(int count) {
+        // Apenas para demonstrar que a instanciação imediata de muitas Views pode ser bastante
+        // prejudicial à experiência do utilizador.
+        // Experimente colocar 50000 na EditText e pressionar Refresh.
+        // A instanciação de 50000 TextViews pode demorar alguns segundos e a UI está bloqueada
+        // O próprio scroll pode perder a fluídez, porque embora nem todas as TextViews estejam
+        // visíveis, todas estão desenhadas e presentes no layout!
+
+        // A ScrollView deve ser utilizada apenas para layouts que podem não caber no ecrã do device
+
+        // Para criar listas deve ser utilizada a RecyclerView (ver RecyclerViewListActivity)
+
         long start = System.currentTimeMillis();
+
         for (int i = 0; i < count; i++) {
             TextView tv = new TextView(this);
             tv.setText("TextView #" + i);
-            tv.setPadding(10, 10 ,10 ,10);
+            tv.setPadding(16, 16 ,16 ,16);
             content.addView(tv);
         }
         long elapsed = System.currentTimeMillis() - start;
 
-        Toast.makeText(this, String.format("%dms to create %d TextViews", elapsed, count), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.format(Locale.getDefault(), "%dms to create %d TextViews", elapsed, count), Toast.LENGTH_SHORT).show();
     }
 }

@@ -20,36 +20,55 @@
             android:id="@+id/content_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical">
+
+        </LinearLayout>
 
     </ScrollView>
 
 
+    <View
+        app:layout_constraintBottom_toTopOf="@id/input_wrapper"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:background="@drawable/gradient_shadow"/>
 
     <LinearLayout
         android:id="@+id/input_wrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:clipToPadding="false"
+        android:elevation="4dp"
+        android:background="@color/white">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/item_count_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
             android:hint="Item count"
-            android:inputType="number"/>
+            android:inputType="number" />
 
-        <Button
-            android:onClick="onRefresh"
-            android:text="Refresh"
-            android:layout_width="0dp"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:onClick="onRefresh"
+            app:srcCompat="@drawable/ic_baseline_refresh_24"
+            android:tint="@color/white"
+            app:tint="@color/white"
+            />
 
     </LinearLayout>
 
