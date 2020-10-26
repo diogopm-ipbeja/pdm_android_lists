@@ -26,7 +26,7 @@ public class ListViewActivity extends AppCompatActivity {
 
 
         List<String> dummyData = new ArrayList<>();
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             dummyData.add("Value #"+i);
         }
 
@@ -62,7 +62,7 @@ public class ListViewActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = LayoutInflater.from(ListViewActivity.this).
+                convertView = LayoutInflater.from(parent.getContext()).
                         inflate(R.layout.list_view_item, parent, false);
             }
 
