@@ -62,6 +62,7 @@ public class ListViewActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
+                System.out.println("New View created.");
                 convertView = LayoutInflater.from(parent.getContext()).
                         inflate(R.layout.list_view_item, parent, false);
             }
